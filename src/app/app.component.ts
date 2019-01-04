@@ -14,10 +14,10 @@ export class AppComponent {
       if (user) {
         userService.save(user);
 
-        let returnUrl = route.snapshot.queryParamMap.get('returnUrl') || '/';
+        let returnUrl = route.snapshot.queryParamMap.get('returnUrl');
         //let returnUrl = localStorage.getItem('returnUrl');
         //debugger;
-        router.navigateByUrl(returnUrl);
+        if (returnUrl) router.navigateByUrl(returnUrl);
       }
     })
   }
