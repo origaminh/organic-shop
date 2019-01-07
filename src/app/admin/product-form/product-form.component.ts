@@ -21,11 +21,11 @@ export class ProductFormComponent implements OnInit {
     private productService: ProductService) { 
     this.categories$ = categoryService.getAll();
 
-    // Need to subscribe to paramMap Observable if the url param 'id' can change casually
+    // This would need to subscribe to paramMap Observable if the url param 'id' can change casually
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) this.productService.get(this.id).pipe(
       take(1)
-    ).subscribe(p => this.product = p); // Need to unsubscribe
+    ).subscribe(p => this.product = p);
   }
 
   save(product) {
