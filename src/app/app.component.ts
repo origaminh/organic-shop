@@ -1,6 +1,7 @@
+import { ShoppingCartService } from './shopping-cart.service';
 import { UserService } from './user.service';
 import { AuthService } from './auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,8 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor(private userService: UserService, private auth: AuthService, router: Router, private route: ActivatedRoute){
+export class AppComponent implements OnInit {
+  constructor(
+    private userService: UserService, 
+    private auth: AuthService, router: Router, 
+    private route: ActivatedRoute,
+    private shoppingCartService: ShoppingCartService
+    ){
     auth.user$.subscribe(user => {
       if (user) {
         userService.save(user);
@@ -20,5 +26,10 @@ export class AppComponent {
         if (returnUrl) router.navigateByUrl(returnUrl);
       }
     })
+  }
+
+  cart$;
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 }
