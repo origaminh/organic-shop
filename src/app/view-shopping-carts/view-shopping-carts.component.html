@@ -1,0 +1,25 @@
+<h1>All Shopping Carts</h1>
+<div class="row col-10">
+  <a (click)="deleteAllShoppingCarts()" class="btn btn-warning">
+    Delete all shopping carts and go to Home
+  </a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Shopping Cart</th>
+        <th class="text-center" style="width: 230px;">dateCreated</th>
+        <!-- <th class="text-right" style="width: 200px;">Price</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of shoppingCarts">
+        <td>
+          {{ cart.key }}
+        </td>
+        <td>
+          {{ cart.dateCreated }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

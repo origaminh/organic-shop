@@ -15,7 +15,7 @@ export class BsNavbarComponent implements OnInit {
   // cart$: Observable<ShoppingCart>;
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) { 
   }
-  @Input() cart$;
+  @Input() cart;
   
   logout(){
     this.auth.logout();

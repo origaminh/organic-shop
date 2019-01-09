@@ -24,11 +24,13 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     return this.db.object<any>('/shopping-carts/' + cartId).valueChanges()
       .pipe(
-        map(a => {
-          return new ShoppingCart(a.items)})
+        map(a => new ShoppingCart(a.items) )
       );  //Map to ShoppingCart object to assign returned objects ShoppingCart class
     // return GetFireObject( this.db.object('/shopping-carts/' + cartId) );
   }
+  sharedCart: ShoppingCart;
+
+
   async clearCart(){
     let cartId = await this.getOrCreateCartId();
     this.db.object('/shopping-carts/' + cartId + '/items').remove();

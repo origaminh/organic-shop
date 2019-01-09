@@ -28,8 +28,10 @@ export class AppComponent implements OnInit {
     })
   }
 
-  cart$;
+  cart;
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    (await this.shoppingCartService.getCart()).subscribe(cart => {
+      this.cart = cart;
+    });
   }
 }

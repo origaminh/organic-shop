@@ -12,7 +12,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/shopping-cart">
           Shopping Cart 
-          <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+          <span class="badge badge-warning badge-pill" *ngIf="cart">
             {{ cart.totalItemsCount }}
           </span>
         </a>
@@ -37,6 +37,7 @@
           <a class="dropdown-item" (click)="logout()">Log Out</a>
         </div>
       </li>
+      <li class="nav-item"><a routerLink="/view-shopping-carts" class="nav-link">View Shopping Carts</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
