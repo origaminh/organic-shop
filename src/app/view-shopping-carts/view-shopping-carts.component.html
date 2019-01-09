@@ -7,8 +7,8 @@
     <thead>
       <tr>
         <th>Shopping Cart</th>
-        <th class="text-center" style="width: 230px;">dateCreated</th>
-        <!-- <th class="text-right" style="width: 200px;">Price</th> -->
+        <th class="text-left" style="width: 230px;">dateCreated</th>
+        <th class="text-left" style="width: 200px;">itemsCount</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +18,9 @@
         </td>
         <td>
           {{ cart.dateCreated }}
+        </td>
+        <td>
+          {{ getItemsCount(cart) }}
         </td>
       </tr>
     </tbody>

@@ -32,6 +32,14 @@ export class ViewShoppingCartsComponent implements OnDestroy {
       window.location.href = '/';
     })
   }
+  getItemsCount(cart){
+    if(!cart.items) return 0;
+    let sum = 0;
+    for(var key in cart.items){
+      sum += cart.items[key].quantity;
+    }
+    return sum;
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
